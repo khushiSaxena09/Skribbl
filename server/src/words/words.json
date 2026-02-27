@@ -1,0 +1,34 @@
+[
+  {
+    "category": "animals",
+    "words": ["cat", "dog", "bird", "fish", "lion", "tiger", "bear", "wolf", "elephant", "monkey", "penguin", "shark", "horse", "rabbit", "butterfly", "octopus", "dinosaur", "whale"]
+  },
+  {
+    "category": "objects",
+    "words": ["house", "car", "tree", "book", "phone", "chair", "table", "door", "window", "lamp", "computer", "keyboard", "mouse", "cup", "plate", "fork", "knife", "spoon", "bicycle", "rocket"]
+  },
+  {
+    "category": "actions",
+    "words": ["run", "jump", "dance", "sing", "eat", "sleep", "read", "write", "swim", "fly", "drive", "paint", "laugh", "cry", "scream", "hug", "kiss", "fight", "play", "cook"]
+  },
+  {
+    "category": "food",
+    "words": ["apple", "banana", "pizza", "cake", "icecream", "burger", "fries", "sushi", "pasta", "bread", "cheese", "milk", "egg", "chicken", "fish", "rice", "noodles", "soup", "salad", "chocolate"]
+  },
+  {
+    "category": "sports",
+    "words": ["football", "basketball", "tennis", "golf", "swimming", "running", "cycling", "wrestling", "boxing", "karate", "yoga", "skiing", "surfing", "skateboarding"]
+  },
+  {
+    "category": "professions",
+    "words": ["doctor", "teacher", "engineer", "chef", "artist", "musician", "dancer", "actor", "pilot", "astronaut", "scientist", "writer", "photographer", "designer"]
+  },
+  {
+    "category": "nature",
+    "words": ["mountain", "ocean", "forest", "desert", "river", "lake", "volcano", "waterfall", "storm", "rainbow", "sunset", "sunrise", "cloud", "lightning", "snow"]
+  },
+  {
+    "category": "technology",
+    "words": ["robot", "drone", "satellite", "telescope", "microscope", "laptop", "tablet", "camera", "microphone", "speaker", "headphones", "gaming", "internet", "code", "algorithm"]
+  }
+]

@@ -1,0 +1,99 @@
+/* Page background */
+.lobby-container {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* Card */
+.lobby-card {
+  background: white;
+  padding: 32px;
+  width: 360px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Titles */
+.lobby-card h1 {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+/* Inputs */
+.lobby-card input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+/* Buttons */
+.primary-btn {
+  width: 100%;
+  padding: 10px;
+  background: #6366f1;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.primary-btn:hover {
+  background: #4f46e5;
+}
+
+.secondary-btn {
+  width: 100%;
+  padding: 10px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* Divider */
+.divider {
+  margin: 12px 0;
+  font-size: 12px;
+  color: #999;
+}
+
+/* Room code */
+.room-code {
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background: #f3f4f6;
+  padding: 10px;
+  border-radius: 8px;
+  margin: 12px 0;
+}
+
+/* Player list */
+.player-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
+}
+
+.player-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 14px;
+}

@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "cd frontend && npm i && npm run build",
+    "start": "cd backend && node dist/server.js",
+    "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\""
+  }
+}
