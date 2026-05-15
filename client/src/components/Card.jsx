@@ -1,18 +1,3 @@
-// import React from 'react';
-
-// const Card = ({ children, className = '', padding = 'p-8 lg:p-12' }) => (
-//   <div
-//     className={`
-//       bg-white/10 backdrop-blur-3xl border border-white/20
-//       rounded-3xl shadow-2xl hover:shadow-3xl transition-all duration-300
-//       ${padding} ${className}
-//     `}
-//   >
-//     {children}
-//   </div>
-// );
-
-// export default Card;
 
 import React from 'react';
 

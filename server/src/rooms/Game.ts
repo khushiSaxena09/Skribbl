@@ -1,5 +1,4 @@
-
-import wordsData from "../words/words.json";
+import { getRandomWords } from "../services/wordCache";
 import { Room } from "./Room";
 
 export class Game {
@@ -133,9 +132,7 @@ export class Game {
   }
 
   pickWords(): string[] {
-    const allWords = wordsData.flatMap((c: any) => c.words);
-    const shuffled = allWords.sort(() => 0.5 - Math.random()).slice(0, 3); // 3 words better UX
-    return shuffled;
+    return getRandomWords(this.room.settings.wordCount);
   }
 
   handleEvent(event: string, playerId: string, data: any) {
