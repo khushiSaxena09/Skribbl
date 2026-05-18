@@ -1,99 +1,357 @@
-/* Page background */
-.lobby-container {
-  height: 100%;
+/* ================================
+   LOBBY PAGE — Full dark theme CSS
+   ================================ */
+
+.lobby-page {
   min-height: 100vh;
+  background: #1a0e2e;
+  position: relative;
+  overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 32px 16px 48px;
   font-family: "Segoe UI", sans-serif;
 }
 
-/* Card */
-.lobby-card {
-  background: white;
-  padding: 32px;
-  width: 360px;
-  border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  text-align: center;
+/* Background blobs */
+.lobby-deco-1 {
+  position: absolute;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(168, 85, 247, 0.08);
+  top: -100px; left: -100px;
+  pointer-events: none;
+}
+.lobby-deco-2 {
+  position: absolute;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: rgba(236, 72, 153, 0.07);
+  bottom: -80px; right: -70px;
+  pointer-events: none;
+}
+.lobby-deco-3 {
+  position: absolute;
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  background: rgba(249, 115, 22, 0.08);
+  top: 200px; left: 24px;
+  pointer-events: none;
 }
 
-/* Titles */
-.lobby-card h1 {
-  margin-bottom: 8px;
-}
-
-.subtitle {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 24px;
-}
-
-/* Inputs */
-.lobby-card input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-}
-
-/* Buttons */
-.primary-btn {
-  width: 100%;
-  padding: 10px;
-  background: #6366f1;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-bottom: 12px;
-}
-
-.primary-btn:hover {
-  background: #4f46e5;
-}
-
-.secondary-btn {
-  width: 100%;
-  padding: 10px;
-  background: #f3f4f6;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* Divider */
-.divider {
-  margin: 12px 0;
-  font-size: 12px;
-  color: #999;
-}
-
-/* Room code */
-.room-code {
-  font-size: 22px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  background: #f3f4f6;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 12px 0;
-}
-
-/* Player list */
-.player-list {
-  list-style: none;
-  padding: 0;
-  margin: 16px 0;
-}
-
-.player-list li {
+.lobby-nohome {
   display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ── Wrapper ── */
+.lobby-wrapper {
+  width: 100%;
+  max-width: 860px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── Header ── */
+.lobby-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.lobby-top-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 999px;
+  padding: 5px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+}
+
+.lobby-logo-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.lobby-logo-icon {
+  width: 48px; height: 48px;
+  background: linear-gradient(135deg, #f97316, #ec4899);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+}
+
+.lobby-logo-text {
+  font-size: 40px;
+  font-weight: 900;
+  margin: 0;
+  background: linear-gradient(90deg, #f97316 0%, #ec4899 35%, #a855f7 65%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.lobby-logo-sub {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 700;
+  margin: 0 0 16px;
+}
+
+.lobby-room-code-btn {
+  display: inline-block;
+  background: linear-gradient(90deg, #7c3aed, #6d28d9);
+  border: none;
+  border-radius: 12px;
+  padding: 10px 28px;
+  color: #fff;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 5px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  margin-bottom: 6px;
+}
+.lobby-room-code-btn:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 24px rgba(124,58,237,0.45);
+}
+
+.lobby-copy-hint {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 0 10px;
+}
+
+.lobby-ready-count {
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  margin: 0;
+}
+.lobby-ready-green { color: #4ade80; font-weight: 800; }
+.lobby-ready-total { color: rgba(255,255,255,0.4); }
+
+/* ── Grid ── */
+.lobby-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 620px) {
+  .lobby-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Cards ── */
+.lobby-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 20px;
+}
+
+.lobby-card-head {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+/* ── Settings ── */
+.lobby-settings { display: flex; flex-direction: column; }
+
+.lobby-setting-row {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 6px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.lobby-setting-row:last-child { border-bottom: none; }
+
+.lobby-setting-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+}
+.lobby-setting-val { font-size: 18px; font-weight: 900; }
+.lobby-val-orange { color: #f97316; }
+.lobby-val-pink   { color: #ec4899; }
+.lobby-val-purple { color: #a855f7; }
+.lobby-val-blue   { color: #60a5fa; }
+
+/* ── Player List (inline, no external component) ── */
+.lpl-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lpl-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 10px 14px;
+  transition: background 0.2s;
+}
+
+.lpl-slot-me {
+  background: rgba(236,72,153,0.12);
+  border-color: rgba(236,72,153,0.3);
+}
+
+.lpl-slot-ready {
+  background: rgba(74,222,128,0.08);
+  border-color: rgba(74,222,128,0.22);
+}
+
+.lpl-slot-empty {
+  opacity: 0.3;
+  border-style: dashed;
+}
+
+.lpl-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 13px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.lpl-avatar-empty {
+  background: rgba(255,255,255,0.07) !important;
+  color: rgba(255,255,255,0.2);
+  border: 1.5px dashed rgba(255,255,255,0.15);
+}
+
+.lpl-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.lpl-name {
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lpl-rank {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.5px;
+}
+
+.lpl-empty-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.25);
+  font-style: italic;
+  flex: 1;
+}
+
+.lpl-score {
+  font-size: 12px;
+  font-weight: 800;
+  color: #f59e0b;
+  flex-shrink: 0;
+}
+
+.lpl-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.lpl-dot-on  { background: #4ade80; box-shadow: 0 0 6px rgba(74,222,128,0.6); }
+.lpl-dot-off { background: rgba(255,255,255,0.12); }
+
+/* ── Footer ── */
+.lobby-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.lobby-btn-primary {
+  background: linear-gradient(90deg, #ec4899, #f97316);
+  border: none;
+  border-radius: 14px;
+  padding: 14px 36px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.lobby-btn-primary:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 28px rgba(236,72,153,0.4);
+}
+.lobby-btn-primary:active { transform: scale(0.97); }
+
+.lobby-btn-secondary {
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.15);
+  border-radius: 14px;
+  padding: 14px 28px;
+  color: rgba(255,255,255,0.65);
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.lobby-btn-secondary:hover {
+  background: rgba(255,255,255,0.12);
+  transform: scale(1.03);
+}
+
+.lobby-waiting-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  background: rgba(74,222,128,0.1);
+  border: 1px solid rgba(74,222,128,0.25);
+  border-radius: 14px;
+  color: #4ade80;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.lobby-starting-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 24px;
+  background: rgba(249,115,22,0.12);
+  border: 1px solid rgba(249,115,22,0.3);
+  border-radius: 14px;
+  color: #f97316;
+  font-weight: 700;
   font-size: 14px;
 }
