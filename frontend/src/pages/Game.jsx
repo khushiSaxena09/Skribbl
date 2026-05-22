@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { socket } from "../socket";
 import GameCanvas from "../components/GameCanvas";
 import ChatBox from "../components/ChatBox";
@@ -7,15 +7,20 @@ import toast from "react-hot-toast";
 
 function Game() {
   const location = useLocation();
+  const navigate = useNavigate();
   const [room, setRoom] = useState(location.state);
   const [gameState, setGameState] = useState(null);
   const [players, setPlayers] = useState(room.players);
   const [timeLeft, setTimeLeft] = useState(room.settings.drawTime || 60);
   const [hint, setHint] = useState("");
+  const [gameOverData, setGameOverData] = useState(null);
 
   useEffect(() => {
     socket.on("game_state", (state) => {
-      setGameState(state);
+      setGameState((prev) => ({
+        ...prev,
+        ...state,
+      }));
 
       // UPDATE ROOM
       setRoom((prev) => ({
@@ -47,12 +52,9 @@ function Game() {
 
     socket.on("game_over", ({ players }) => {
       const winner = [...players].sort((a, b) => b.score - a.score)[0];
-      toast.success(
-        `🏆 Game Over!\n\nWinner: ${winner.name}\nScore: ${winner.score}`,
-        {
-          duration: 6000,
-        },
-      );
+      setGameOverData({
+        winner,
+      });
     });
 
     return () => {
@@ -128,6 +130,31 @@ function Game() {
           <ChatBox roomId={room.roomId} players={players} />
         </div>
       </div>
+
+      {gameOverData && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
+          <div className="w-[90%] max-w-md rounded-2xl bg-white p-8 text-center shadow-2xl">
+            <h1 className="mb-4 text-3xl font-bold text-gray-800">
+              🎮 Game End
+            </h1>
+
+            <p className="mb-2 text-xl font-semibold text-gray-700">
+              🏆 Winner: {gameOverData.winner.name}
+            </p>
+
+            <p className="mb-6 text-lg text-gray-600">
+              Score: {gameOverData.winner.score}
+            </p>
+
+            <button
+              onClick={() => navigate("/")}
+              className="rounded-xl bg-blue-600 px-6 py-3 text-white hover:bg-blue-700"
+            >
+              Continue
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

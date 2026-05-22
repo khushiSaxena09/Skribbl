@@ -408,7 +408,7 @@ function GameCanvas({ roomId, room, hint }) {
           </div>
         ) : (
           <div className="bg-yellow-400/20 text-yellow-300 px-5 py-3 rounded-2xl font-bold">
-            💡 Hint: {hint || "_ _ _"}
+            💡 Hint: {hint}
           </div>
         )}
       </div>

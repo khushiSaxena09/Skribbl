@@ -15,10 +15,15 @@ app.use(cors());
 
 const server = http.createServer(app);
 
+app.use(cors({
+  origin: "https://skribbl-pink.vercel.app",
+  credentials: true,
+}));
+
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST"],
+    origin: "https://skribbl-pink.vercel.app",
+    credentials: true,
   },
 });
 

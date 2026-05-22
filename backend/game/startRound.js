@@ -6,24 +6,12 @@ function startRound(io, roomId) {
 
   if (!room) return;
 
-  if (room.currentTurn >= room.players.length) {
-    room.currentTurn = 0;
-    room.currentRound++;
-  }
-
-  if (room.currentRound > room.totalRounds) {
-    io.to(roomId).emit("game_over", {
-      players: room.players,
-    });
-
-    return;
-  }
-
   room.guessedPlayers = [];
   room.currentWord = "";
   room.wordOptions = [];
   io.to(roomId).emit("clear_canvas");
-  
+
+
   const drawer = room.players[room.currentTurn];
 
   room.drawerId = drawer.id;

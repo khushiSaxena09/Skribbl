@@ -32,8 +32,6 @@ module.exports = (io, socket) => {
     io.to(room.host).emit("choose_word", {
       wordOptions: room.wordOptions,
     });
-
-    room.waitingForWordChoice = false;
   });
 
   socket.on("choose_word", ({ roomId, word }) => {
@@ -42,7 +40,45 @@ module.exports = (io, socket) => {
     if (!room) return;
 
     room.currentWord = word;
-    // room.waitingForWordChoice = false;
+    room.waitingForWordChoice = false;
+
+    const hiddenWord = word
+      .split("")
+      .map(() => "_")
+      .join(" ");
+
+    io.to(roomId).emit("hint", {
+      hint: hiddenWord,
+    });
+
+    const revealIndexes = [];
+
+    const hintInterval = setInterval(() => {
+      if (!room.currentWord) {
+        clearInterval(hintInterval);
+        return;
+      }
+
+      let randomIndex;
+
+      do {
+        randomIndex = Math.floor(Math.random() * word.length);
+      } while (revealIndexes.includes(randomIndex));
+
+      revealIndexes.push(randomIndex);
+
+      const hint = word
+        .split("")
+        .map((char, index) => (revealIndexes.includes(index) ? char : "_"))
+        .join(" ");
+
+      io.to(roomId).emit("hint", { hint });
+
+      // HALF WORD REVEAL KE BAAD STOP
+      if (revealIndexes.length >= Math.floor(word.length / 2)) {
+        clearInterval(hintInterval);
+      }
+    }, 10000);
 
     io.to(roomId).emit("word_selected", {
       wordLength: word.length,

@@ -30,12 +30,27 @@ function startTimer(io, roomId, room, startRound) {
       // CLEAR BOARD
       io.to(roomId).emit("clear_canvas");
 
-      // NEXT TURN
-      room.currentTurn++;
+      // NEXT ROUND
+      room.currentRound++;
+
+      // GAME OVER
+      if (room.currentRound > room.totalRounds) {
+        io.to(roomId).emit("game_over", {
+          players: room.players,
+        });
+
+        room.gameStarted = false;
+        room.currentWord = "";
+        room.wordOptions = [];
+
+        return;
+      }
 
       // RESET ROUND DATA
       room.currentWord = "";
       room.wordOptions = [];
+      room.guessedPlayers = [];
+      room.waitingForWordChoice = true;
 
       // NEXT ROUND
       setTimeout(() => {
