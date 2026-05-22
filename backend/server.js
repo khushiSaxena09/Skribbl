@@ -11,14 +11,12 @@ const disconnectHandlers = require("./handlers/disconnectHandlers");
 
 const app = express();
 
-app.use(cors());
-
-const server = http.createServer(app);
-
 app.use(cors({
   origin: "https://skribbl-pink.vercel.app",
   credentials: true,
 }));
+
+const server = http.createServer(app);
 
 const io = new Server(server, {
   cors: {
@@ -28,7 +26,6 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  // LOOP ALL HANDLERS
   [
     roomHandlers,
     gameHandlers,
@@ -38,6 +35,8 @@ io.on("connection", (socket) => {
   ].forEach((handler) => handler(io, socket));
 });
 
-server.listen(3000, () => {
-  console.log("Server running on port 3000");
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
